@@ -75,8 +75,8 @@ def display_results(selected_value):
                                     zmax=valmax,
                                     marker_line_width=0))
     fig.update_layout(mapbox_style="carto-positron",
-                      mapbox_zoom=5.8,
-                      mapbox_center = {"lat": 38.0293, "lon": -79.4428})
+                      mapbox_zoom=4.5,
+                      mapbox_center = {"lat": 36.7783, "lon": -119.4179})
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
 # https://community.plot.ly/t/what-colorscales-are-available-in-plotly-and-which-are-the-default/2079
