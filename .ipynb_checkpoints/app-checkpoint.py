@@ -23,7 +23,7 @@ varlist=['TotalPop', 'Men', 'Women', 'Hispanic',
        'WorkAtHome', 'MeanCommute', 'Employed', 'PrivateWork', 'PublicWork',
        'SelfEmployed', 'FamilyWork', 'Unemployment', 'RUCC_2013']
 
-df=pd.read_pickle('https://github.com/Malathy-Muthu/305-virginia-census-data/blob/main/resources/tx-stats.pkl?raw=true')
+df=pd.read_pickle('resources/ca-stats.pkl')
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -70,7 +70,7 @@ def display_results(selected_value):
                                     locations=df['FIPS'],
                                     z=df[selected_value],
                                     colorscale='Blues',
-                                    text=df['County_y'],
+                                    text=df['County'],
                                     zmin=valmin,
                                     zmax=valmax,
                                     marker_line_width=0))
