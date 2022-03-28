@@ -70,7 +70,7 @@ def display_results(selected_value):
                                     locations=df['FIPS'],
                                     z=df[selected_value],
                                     colorscale='Blues',
-                                    text=df['County'],
+                                    text=df['County_y'],
                                     zmin=valmin,
                                     zmax=valmax,
                                     marker_line_width=0))
