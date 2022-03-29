@@ -12,7 +12,7 @@ with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-c
 
 ########### Define a few variables ######
 
-tabtitle = 'California Counties'
+tabtitle = 'Ohio Counties'
 sourceurl = 'https://www.kaggle.com/muonneutrino/us-census-demographic-data'
 githublink = 'https://github.com/farkasdilemma/305-virginia-census-data'
 varlist=['TotalPop', 'Men', 'Women', 'Hispanic',
@@ -23,7 +23,7 @@ varlist=['TotalPop', 'Men', 'Women', 'Hispanic',
        'WorkAtHome', 'MeanCommute', 'Employed', 'PrivateWork', 'PublicWork',
        'SelfEmployed', 'FamilyWork', 'Unemployment', 'RUCC_2013']
 
-df=pd.read_pickle('resources/ca-stats.pkl')
+df=pd.read_pickle('resources/oh-stats.pkl')
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -34,7 +34,7 @@ app.title=tabtitle
 ########### Layout
 
 app.layout = html.Div(children=[
-    html.H1('California Census Data 2017'),
+    html.H1('Ohio Census Data 2017'),
     # Dropdowns
     html.Div(children=[
         # left side
@@ -48,7 +48,7 @@ app.layout = html.Div(children=[
         ], className='three columns'),
         # right side
         html.Div([
-            dcc.Graph(id='ca-map')
+            dcc.Graph(id='oh-map')
         ], className='nine columns'),
     ], className='twelve columns'),
 
@@ -61,7 +61,7 @@ app.layout = html.Div(children=[
 )
 
 ############ Callbacks
-@app.callback(Output('ca-map', 'figure'),
+@app.callback(Output('oh-map', 'figure'),
               [Input('stats-drop', 'value')])
 def display_results(selected_value):
     valmin=df[selected_value].min()
@@ -69,14 +69,14 @@ def display_results(selected_value):
     fig = go.Figure(go.Choroplethmapbox(geojson=counties,
                                     locations=df['FIPS'],
                                     z=df[selected_value],
-                                    colorscale='Blues',
+                                    colorscale='Greens',
                                     text=df['County'],
                                     zmin=valmin,
                                     zmax=valmax,
                                     marker_line_width=0))
     fig.update_layout(mapbox_style="carto-positron",
                       mapbox_zoom=4.5,
-                      mapbox_center = {"lat": 36.7783, "lon": -119.4179})
+                      mapbox_center = {"lat": 40.4173, "lon": -82.9071})
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
 # https://community.plot.ly/t/what-colorscales-are-available-in-plotly-and-which-are-the-default/2079
